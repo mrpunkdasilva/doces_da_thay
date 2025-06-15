@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: doces_da_thay_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    restart: always
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    networks:
+      - doces_network
+
+networks:
+  doces_network:
+    driver: bridge
